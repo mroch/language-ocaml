@@ -1,13 +1,13 @@
 {
   "name": "language-ocaml",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "A short description of your package",
-  "repository": "https://github.com/atom/language-ocaml",
+  "description": "Syntax support for the OCaml language",
+  "repository": "https://github.com/toroidal-code/language-ocaml",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
+  "dependencies'": {
   }
 }
