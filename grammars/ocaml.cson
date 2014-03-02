@@ -476,7 +476,7 @@
   }
   {
     'match': '::'
-    'name': 'punctuation.definition.list.constructor.ocaml'
+    'name': 'keyword.operator.infix.list.constructor.ocaml'
   }
   {
     'match': ';;'
