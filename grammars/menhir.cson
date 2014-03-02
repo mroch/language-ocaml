@@ -23,7 +23,6 @@
     'name': 'meta.declarations.menhir'
     'patterns': [
       { 'include': '#comments' }
-
       { 'include': '#declaration-matches' }
     ]
   }
@@ -120,7 +119,6 @@
             'match': '[a-z][A-Za-z0-9_]*'
             'name': 'entity.name.function.non-terminal.reference.menhir'
           }
-
           { 'include': '#comments' }
         ]
       }
@@ -139,7 +137,6 @@
             'match': '[a-z][A-Za-z0-9_]*'
             'name': 'entity.name.function.non-terminal.reference.menhir'
           }
-
           { 'include': '#comments' }
         ]
       }
@@ -162,7 +159,6 @@
             'match': '[a-z][A-Za-z0-9_]*'
             'name': 'entity.name.function.non-terminal.reference.menhir'
           }
-
           { 'include': '#comments' }
         ]
       }
@@ -183,6 +179,17 @@
         'name': 'meta.precedence.declaration'
       }
     ]
+  'variables':
+    'patterns': [
+      {
+        'match': '([a-z][A-Za-z0-9_]*)\\s*='
+        'captures':
+          '1':
+            'name': 'variable.parameter.menhir'
+        'name': 'meta.assignment.menhir'
+        'patterns': [{ 'include': '#references' }]
+      }
+    ]
   'references':
     'patterns': [
       {
@@ -197,17 +204,14 @@
   'rule-patterns':
     'patterns': [
       {
-        'begin': '((?<!\\||:)(\\||:)(?!\\||:))'
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.separator.rule.menhir'
-        'end': '\\s*(?=\\||;)'
-        'name': 'meta.rule-match.ocaml'
+        'begin': '((?<!\\|)(\\|)(?!:))'
+        'end': '(?<=})\s'
+        'name': 'meta.rule-pattern.menhir'
         'patterns': [
           { 'include': '#precs' }
           { 'include': '#semantic-actions' }
+          { 'include': '#variables' }
           { 'include': '#references' }
-
           { 'include': '#comments' }
         ]
       }
@@ -215,15 +219,15 @@
   'rules':
     'patterns': [
       {
-        'begin': '[a-z][a-zA-Z_]*'
+        'begin': '([a-z][a-zA-Z_]*)(?>\\s*(:|\\|))'
         'beginCaptures':
-          '0':
-            'name': 'entity.name.function.non-terminal.menhir'
-        'end': ';'
+          '1':
+            'name': 'entity.name.function.non-terminal.rule.begin.menhir'
+        'end': '(?<=})\s(?!\\|)'
         'endCaptures':
           '0':
-            'name': 'punctuation.separator.rule.menhir'
-        'name': 'meta.non-terminal.menhir'
+            'name': 'entity.name.function.non-terminal.rule.end.menhir'        
+        'name': 'meta.non-terminal.rule.menhir'
         'patterns': [{ 'include': '#rule-patterns' }]
       }
     ]
@@ -233,11 +237,11 @@
         'begin': '[^\\\']({)'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.action.semantic.menhir'
+            'name': 'punctuation.definition.action.semantic.begin.menhir'
         'end': '(})'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.action.semantic.menhir'
+            'name': 'punctuation.definition.action.semantic.end.menhir'
         'name': 'meta.action.semantic.menhir'
         'patterns': [{ 'include': 'source.ocaml' }]
       }
