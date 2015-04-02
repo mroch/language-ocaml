@@ -503,7 +503,7 @@
       '1':
         'name': 'punctuation.separator.argument-label.ocaml'
     'match': '~[a-z][a-z0-9\'_]*(:)?'
-    'name': 'entity.name.tag.label.ocaml'
+    'name': 'entity.name.tag.variable.ocaml'
   }
   {
     'begin': '\\b(begin)\\b'
@@ -780,7 +780,7 @@
               '1':
                 'name': 'punctuation.definition.optional-parameter.ocaml'
               '2':
-                'name': 'entity.name.tag.label.optional.ocaml'
+                'name': 'entity.name.tag.variable.optional.ocaml'
               '3':
                 'name': 'punctuation.separator.optional-parameter.ocaml'
             'match': '(\\?)([a-z][a-zA-Z0-9_]*)\\s*(:)'
@@ -790,9 +790,9 @@
             'begin': '([a-z][a-zA-Z0-9\'_]*)\\s*(:)\\s*'
             'beginCaptures':
               '1':
-                'name': 'entity.name.tag.label.ocaml'
+                'name': 'entity.name.tag.variable.ocaml'
               '2':
-                'name': 'punctuation.separator.label.ocaml'
+                'name': 'punctuation.separator.variable.ocaml'
               '3':
                 'name': 'storage.type.ocaml'
             'end': '\\s'
@@ -825,7 +825,7 @@
               '1':
                 'name': 'punctuation.definition.optional-parameter.ocaml'
               '2':
-                'name': 'entity.name.tag.label.optional.ocaml'
+                'name': 'entity.name.tag.variable.optional.ocaml'
               '3':
                 'name': 'punctuation.separator.optional-parameter.ocaml'
             'match': '(\\?)([a-z][a-zA-Z0-9_]*)\\s*(:)'
@@ -837,9 +837,9 @@
               '1':
                 'name': 'punctuation.definition.labeled-parameter.ocaml'
               '2':
-                'name': 'entity.name.tag.label.ocaml'
+                'name': 'entity.name.tag.variable.ocaml'
               '3':
-                'name': 'punctuation.separator.label.ocaml'
+                'name': 'punctuation.separator.variable.ocaml'
             'end': '\\s'
             'name': 'variable.parameter.labeled.ocaml'
             'patterns': [
@@ -993,9 +993,9 @@
           '1':
             'name': 'punctuation.definition.labeled-parameter.ocaml'
           '2':
-            'name': 'entity.name.tag.label.ocaml'
+            'name': 'entity.name.tag.variable.ocaml'
           '3':
-            'name': 'punctuation.separator.label.ocaml'
+            'name': 'punctuation.separator.variable.ocaml'
         'end': '(?=(->|\\s))'
         'name': 'variable.parameter.labeled.ocaml'
         'patterns': [
@@ -1009,7 +1009,7 @@
           '1':
             'name': 'punctuation.definition.optional-parameter.ocaml'
           '2':
-            'name': 'entity.name.tag.label.optional.ocaml'
+            'name': 'entity.name.tag.variable.optional.ocaml'
         'match': '(\\?)([a-z][a-zA-Z0-9_]*)'
         'name': 'variable.parameter.optional.ocaml'
       }
@@ -1021,7 +1021,7 @@
           '2':
             'name': 'punctuation.definition.optional-parameter.ocaml'
           '3':
-            'name': 'entity.name.tag.label.optional.ocaml'
+            'name': 'entity.name.tag.variable.optional.ocaml'
           '4':
             'name': 'punctuation.separator.optional-parameter-assignment.ocaml'
         'end': '(\\))'
