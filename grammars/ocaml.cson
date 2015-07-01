@@ -633,6 +633,12 @@
           }
         ]
       }
+    ]
+  'comments_inner':
+    'patterns': [
+      {
+        'include': '#comments'
+      }
       {
         'begin': '(?=[^\\\\])(")'
         'end': '"'
@@ -920,7 +926,7 @@
         'name': 'punctuation.separator.variant-definition.ocaml'
       }
       {
-        'include': '#comments'
+        'include': '#comments_inner'
       }
       {
         'begin': '\\('
@@ -1068,7 +1074,7 @@
         ]
       }
       {
-        'include': '#comments'
+        'include': '#comments_inner'
       }
       {
         'begin': '\\('
