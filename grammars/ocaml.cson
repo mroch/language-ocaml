@@ -573,7 +573,7 @@
     ]
   }
   {
-    'match': '\\b(and|land|lor|lsl|lsr|lxor|mod|or)\\b'
+    'match': '\\b(and|asr|land|lor|lsl|lsr|lxor|mod|or)\\b'
     'name': 'keyword.operator.ocaml'
   }
   {
