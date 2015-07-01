@@ -431,6 +431,7 @@
         'name': 'punctuation.separator.optional-parameter.ocaml'
       '2':
         'name': 'storage.type.ocaml'
+    'name': 'meta.module.signature.val.ocaml'
     'patterns': [
       {
         'include': '$self'
