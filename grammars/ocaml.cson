@@ -113,7 +113,7 @@
         'name': 'keyword.other.function-definition.ocaml'
       '3':
         'name': 'keyword.control.match-definition.ocaml'
-    'end': '(?:(->)|\\b(when)\\b|\\s(?=\\|))'
+    'end': '(?:(->)|\\b(when)\\b|(?:^|\\s)(?=\\|))'
     'endCaptures':
       '1':
         'name': 'punctuation.separator.match-definition.ocaml'
