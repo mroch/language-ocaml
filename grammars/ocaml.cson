@@ -70,7 +70,7 @@
     ]
   }
   {
-    'begin': '(\\(|\\s)(?=fun\\s)'
+    'begin': '(\\()(?=fun\\s)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.function.anonymous.ocaml'
@@ -81,20 +81,20 @@
     'name': 'meta.function.anonymous.ocaml'
     'patterns': [
       {
-        'begin': '(?<=(\\(|\\s))(fun)\\s'
-        'beginCaptures':
-          '2':
-            'name': 'keyword.other.function-definition.ocaml'
-        'end': '(->)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.separator.function-definition.ocaml'
-        'name': 'meta.function.anonymous.definition.ocaml'
-        'patterns': [
-          {
-            'include': '#variables'
-          }
-        ]
+        'include': '#anonymous-function-def'
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
+    'begin': '(\\s)(?=fun\\s)'
+    'end': '(?=\\))'
+    'name': 'meta.function.anonymous.ocaml'
+    'patterns': [
+      {
+        'include': '#anonymous-function-def'
       }
       {
         'include': '$self'
@@ -632,6 +632,25 @@
   }
 ]
 'repository':
+  'anonymous-function-def':
+    'patterns': [
+      {
+        'begin': '(?<=(\\(|\\s))(fun)\\s'
+        'beginCaptures':
+          '2':
+            'name': 'keyword.other.function-definition.ocaml'
+        'end': '(->)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.separator.function-definition.ocaml'
+        'name': 'meta.function.anonymous.definition.ocaml'
+        'patterns': [
+          {
+            'include': '#variables'
+          }
+        ]
+      }
+    ]
   'arrays':
     'patterns': [
       {
