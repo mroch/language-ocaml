@@ -1051,13 +1051,21 @@
         ]
       }
       {
-        'captures':
+        'begin': '(\\?)([a-z][a-zA-Z0-9_]*)(\\s*:\\s*)?'
+        'beginCaptures':
           '1':
             'name': 'punctuation.definition.optional-parameter.ocaml'
           '2':
             'name': 'entity.name.tag.variable.optional.ocaml'
-        'match': '(\\?)([a-z][a-zA-Z0-9_]*)'
+          '3':
+            'name': 'punctuation.separator.variable.ocaml'
+        'end': '(?=(->|\\s))'
         'name': 'variable.parameter.optional.ocaml'
+        'patterns': [
+          {
+            'include': '#variables'
+          }
+        ]
       }
       {
         'begin': '(\\?)(\\()([a-z_][a-zA-Z0-9\'_]*)\\s*(=)'
