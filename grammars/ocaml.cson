@@ -620,7 +620,7 @@
     'name': 'keyword.control.ocaml'
   }
   {
-    'match': '\\b(as|assert|class|constraint|exception|functor|in|include|inherit|initializer|lazy|let|mod|module|mutable|new|object|open|private|rec|sig|struct|type|virtual)\\b'
+    'match': '\\b(as|assert|class|constraint|exception|functor|in|include|inherit|initializer|lazy|let|mod|module|mutable|new|object|open|private|rec|raise|sig|struct|type|virtual)\\b'
     'name': 'keyword.other.ocaml'
   }
   {
