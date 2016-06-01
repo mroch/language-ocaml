@@ -2,11 +2,12 @@
 'fileTypes': ['mly']
 'scopeName': 'source.menhir'
 'patterns': [
-  { 'include': '#declaration' }
+  {'include': '#declaration'}
 ]
 'repository':
   'declaration':
     'patterns': [
+      {'include': '#comment'}
       {
         'begin': '%{'
         'beginCaptures':
@@ -79,8 +80,9 @@
         'begin': ':|\\|'
         'end': '(?={)'
         'patterns': [
-          {'include': '#uident'}
-          {'include': '#lident'}
+          {'include': '#variable'}
+          {'include': '#reference'}
+          {'include': '#operator'}
         ]
       }
       {
@@ -98,6 +100,28 @@
         'patterns': [{'include': 'source.ocaml'}]
       }
     ]
+  'comment':
+    'patterns': [
+      {
+        'begin': '/[*]'
+        'end': '[*]/'
+        'name': 'comment.block.menhir'
+      }
+    ]
+  'variable':
+    'match': '([a-z][a-zA-Z0-9_]*)\\s*='
+    'captures':
+      '1':
+        'name': 'variable.parameter.value.menhir'
+    'patterns': [{'include': '#reference'}]
+  'reference':
+    'patterns': [
+      {'include': '#uident'}
+      {'include': '#lident'}
+    ]
+  'operator':
+    'match': '[+*?]'
+    'name': 'keyword.operator.menhir'
   'uident':
     'match': '[A-Z][a-zA-Z0-9_]*'
     'name': 'entity.name.tag.token.menhir'
