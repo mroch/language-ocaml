@@ -219,14 +219,16 @@
   'rules':
     'patterns': [
       {
-        'begin': '([a-z][a-zA-Z_]*)(?>\\s*(:|\\|))'
+        'begin': '(?:(%public|%inline)\\s*)?([a-z][a-zA-Z_]*)(?:\\s*\\(.*?\\))?(?=\\s*(:|\\|))'
         'beginCaptures':
           '1':
+            'name': 'keyword.other.menhir'
+          '2':
             'name': 'entity.name.function.non-terminal.rule.begin.menhir'
         'end': '(?<=})\s(?!\\|)'
         'endCaptures':
           '0':
-            'name': 'entity.name.function.non-terminal.rule.end.menhir'        
+            'name': 'entity.name.function.non-terminal.rule.end.menhir'
         'name': 'meta.non-terminal.rule.menhir'
         'patterns': [{ 'include': '#rule-patterns' }]
       }
