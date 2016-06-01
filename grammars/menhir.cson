@@ -2,7 +2,21 @@
 'fileTypes': ['mly']
 'scopeName': 'source.menhir'
 'patterns': [
-  {'include': '#declaration'}
+  {
+    'begin': '(?=%[^%])'
+    'end': '(?=%%)'
+    'patterns': [{'include': '#declaration'}]
+  }
+  {
+    'begin': '%%'
+    'beginCaptures':
+      '0': {'name': 'keyword.other.rules.begin.menhir'}
+    'end': '%%'
+    'endCaptures':
+      '0': {'name': 'keyword.other.rules.end.menhir'}
+    'patterns': [{'include': '#rule'}]
+  }
+  {'include': 'source.ocaml'}
 ]
 'repository':
   'declaration':
@@ -53,15 +67,6 @@
         'captures':
           '1': {'name': 'keyword.other.directive.menhir'}
           '2': {'patterns': [{'include': '#lident'}]}
-      }
-      {
-        'begin': '%%'
-        'beginCaptures':
-          '0': {'name': 'keyword.other.rules.begin.menhir'}
-        'end': '%%'
-        'endCaptures':
-          '0': {'name': 'keyword.other.rules.end.menhir'}
-        'patterns': [{'include': '#rule'}]
       }
     ]
   'rule':
