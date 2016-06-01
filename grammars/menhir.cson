@@ -1,258 +1,87 @@
-'fileTypes': [
-  'mly'
-]
-'foldingStartMarker': '%{|%%'
-'foldingStopMarker': '%}|%%'
 'name': 'Menhir'
+'fileTypes': ['mly']
+'scopeName': 'source.menhir'
 'patterns': [
-  {
-    'begin': '(%{)\\s*$'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.operator.header.begin.menhir'
-    'end': '^\\s*(%})'
-    'endCaptures':
-      '1':
-        'name': 'keyword.operator.header.end.menhir'
-    'name': 'meta.header.menhir'
-    'patterns': [{ 'include': 'source.ocaml' }]
-  }
-  {
-    'begin': '(?<=%})\\s*$'
-    'end': '(?:^)(?=%%)'
-    'name': 'meta.declarations.menhir'
-    'patterns': [
-      { 'include': '#comments' }
-      { 'include': '#declaration-matches' }
-    ]
-  }
-  {
-    'begin': '(%%)\\s*$'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.operator.rules.begin.menhir'
-    'end': '^\\s*(%%)'
-    'endCaptures':
-      '1':
-        'name': 'keyword.operator.rules.end.menhir'
-    'name': 'meta.rules.menhir'
-    'patterns': [
-      { 'include': '#comments' }
-      { 'include': '#rules' }
-    ]
-  }
-  { 'include': 'source.ocaml' }
-  { 'include': '#comments' }
-  {
-    'match': '(’|‘|“|”)'
-    'name': 'invalid.illegal.unrecognized-character.ocaml'
-  }
+  { 'include': '#declaration' }
 ]
 'repository':
-  'comments':
+  'declaration':
     'patterns': [
       {
-        'begin': '/\\*'
-        'end': '\\*/'
-        'name': 'comment.block.menhir'
-        'patterns': [{ 'include': '#comments' }]
-      }
-      {
-        'begin': '\\(\\*'
+        'begin': '%{'
         'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.begin.menhir'
-        'end': '\\*\\)'
+          '0': {'name': 'keyword.other.code.begin.menhir'}
+        'end': '%}'
         'endCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.end.menhir'
-        'name': 'comment.block.other.menhir'
-        'patterns': [{ 'include': '#comments' }]
+          '0': {'name': 'keyword.other.code.end.menhir'}
+        'patterns': [{'include': 'source.ocaml'}]
       }
       {
-        'begin': '(?=[^\\\\])(")'
-        'end': '"'
-        'name': 'comment.block.string.quoted.double.menhir'
-        'patterns': [
-          {
-            'match': '\\\\(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\\d\\d|[bnrt\'"\\\\])'
-            'name': 'comment.block.string.constant.character.escape.menhir'
-          }
-        ]
-      }
-    ]
-  'declaration-matches':
-    'patterns': [
-      {
-        'begin': '%token'
+        'begin': '(%parameter)\\s*(<)'
         'beginCaptures':
-          '0':
-            'name': 'keyword.other.directive.token.menhir'
-        'end': '^\\s*($|(^\\s*(?=%)))'
-        'name': 'meta.token.declaration.menhir'
-        'patterns': [
-          { 'include': '#symbol-types' }
-          {
-            'match': '[A-Z][A-Za-z0-9_]*'
-            'name': 'entity.name.type.token.menhir'
-          }
-          { 'include': '#comments' }
-        ]
+          '1': {'name': 'keyword.other.directive.menhir'}
+        'end': '(>)'
+        'patterns': [{'include': 'source.ocaml'}]
       }
       {
-        'begin': '%left|%right|%nonassoc'
+        'begin': '(%start|%type)\\s*(<)'
         'beginCaptures':
-          '0':
-            'name': 'keyword.other.directive.token.associativity.menhir'
-        'end': '(^\\s*$)|(^\\s*(?=%))'
-        'name': 'meta.token.associativity.menhir'
-        'patterns': [
-          {
-            'match': '[A-Z][A-Za-z0-9_]*'
-            'name': 'entity.name.type.token.menhir'
-          }
-          {
-            'match': '[a-z][A-Za-z0-9_]*'
-            'name': 'entity.name.function.non-terminal.reference.menhir'
-          }
-          { 'include': '#comments' }
-        ]
+          '1': {'name': 'keyword.other.directive.menhir'}
+        'end': '(>)([^\\r\\n]+)'
+        'endCaptures':
+          '2': {'patterns': [{'include': '#lident'}]}
+        'patterns': [{'include': 'source.ocaml#typedefs'}]
       }
       {
-        'begin': '%start'
+        'begin': '(%token)\\s*(<)'
         'beginCaptures':
-          '0':
-            'name': 'keyword.other.directive.start-symbol.menhir'
-        'end': '^\\s*($|(^\\s*(?=%)))'
-        'name': 'meta.start-symbol.menhir'
-        'patterns': [
-          { 'include': '#symbol-types'}
-          {
-            'match': '[a-z][A-Za-z0-9_]*'
-            'name': 'entity.name.function.non-terminal.reference.menhir'
-          }
-          { 'include': '#comments' }
-        ]
+          '1': {'name': 'keyword.other.directive.menhir'}
+        'end': '(>)([^\\r\\n]+)'
+        'endCaptures':
+          '2': {'patterns': [{'include': '#uident'}]}
+        'patterns': [{'include': 'source.ocaml#typedefs'}]
       }
       {
-        'begin': '%type'
-        'beginCaptures':
-          '0':
-            'name': 'keyword.other.directive.type.menhir'
-        'end': '$\\s*(?!%)'
-        'name': 'meta.symbol-type.menhir'
-        'patterns': [
-          { 'include': '#symbol-types' }
-          {
-            'match': '[A-Z][A-Za-z0-9_]*'
-            'name': 'entity.name.type.token.reference.menhir'
-          }
-          {
-            'match': '[a-z][A-Za-z0-9_]*'
-            'name': 'entity.name.function.non-terminal.reference.menhir'
-          }
-          { 'include': '#comments' }
-        ]
-      }
-    ]
-  'precs':
-    'patterns': [
-      {
+        'match': '(%token|%nonassoc|%left|%right)([^<>\\r\\n]+)'
         'captures':
-          '1':
-            'name': 'keyword.other.decorator.precedence.menhir'
-          '2':
-            'name': 'keyword.other.precedence.menhir'
-          '4':
-            'name': 'entity.name.function.non-terminal.reference.menhir'
-          '5':
-            'name': 'entity.name.type.token.reference.menhir'
-        'match': '(%)(prec)\\s+(([a-z][a-zA-Z0-9_]*)|(([A-Z][a-zA-Z0-9_]*)))'
-        'name': 'meta.precedence.declaration'
+          '1': {'name': 'keyword.other.directive.menhir'}
+          '2': {'patterns': [{'include': '#uident'}]}
+      }
+      {
+        'begin': '%%'
+        'beginCaptures':
+          '0': {'name': 'keyword.other.rules.begin.menhir'}
+        'end': '%%'
+        'endCaptures':
+          '0': {'name': 'keyword.other.rules.end.menhir'}
+        'patterns': [{'include': '#rule'}]
       }
     ]
-  'variables':
+  'rule':
     'patterns': [
       {
-        'match': '([a-z][A-Za-z0-9_]*)\\s*='
+        'match': '\\(([^)]+)\\)(?=\\s*:)'
         'captures':
-          '1':
-            'name': 'variable.parameter.menhir'
-        'name': 'meta.assignment.menhir'
-        'patterns': [{ 'include': '#references' }]
-      }
-    ]
-  'references':
-    'patterns': [
-      {
-        'match': '[a-z][a-zA-Z0-9_]*'
-        'name': 'entity.name.function.non-terminal.reference.menhir'
+          '1': {'patterns': [{'include': '#ident'}]}
       }
       {
-        'match': '[A-Z][a-zA-Z0-9_]*'
-        'name': 'entity.name.type.token.reference.menhir'
+        'match': '%public|%inline'
+        'name': 'keyword.other.modifier.menhir'
       }
+      {'include': '#action'}
+      {'include': '#uident'}
+      {'include': '#lident'}
     ]
-  'rule-patterns':
-    'patterns': [
-      {
-        'begin': '((?<!\\|)(\\|)(?!:))'
-        'end': '(?<=})\s'
-        'name': 'meta.rule-pattern.menhir'
-        'patterns': [
-          { 'include': '#precs' }
-          { 'include': '#semantic-actions' }
-          { 'include': '#variables' }
-          { 'include': '#references' }
-          { 'include': '#comments' }
-        ]
-      }
-    ]
-  'rules':
-    'patterns': [
-      {
-        'begin': '(?:(%public|%inline)\\s*)?([a-z][a-zA-Z0-9_]*)(?:\\s*\\(.*?\\))?(?=\\s*(:|\\|))'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.menhir'
-          '2':
-            'name': 'entity.name.function.non-terminal.rule.begin.menhir'
-        'end': '(?=[^{}]+:)'
-        'endCaptures':
-          '0':
-            'name': 'entity.name.function.non-terminal.rule.end.menhir'
-        'name': 'meta.non-terminal.rule.menhir'
-        'patterns': [{ 'include': '#rule-patterns' }]
-      }
-    ]
-  'semantic-actions':
-    'patterns': [
-      {
-        'begin': '[^\\\']({)'
-        'beginCaptures':
-          '1':
-            'name': 'punctuation.definition.action.semantic.begin.menhir'
-        'end': '(})'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.definition.action.semantic.end.menhir'
-        'name': 'meta.action.semantic.menhir'
-        'patterns': [{ 'include': 'source.ocaml' }]
-      }
-    ]
-  'symbol-types':
-    'patterns': [
-      {
-        'begin': '<'
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.type-declaration.begin.menhir'
-        'end': '>'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.type-declaration.end.menhir'
-        'name': 'meta.token.type-declaration.menhir'
-        'patterns': [{ 'include': 'source.ocaml' }]
-      }
-    ]
-'scopeName': 'source.menhir'
+  'action':
+    'begin': '(?<![\\\'])({)'
+    'end': '(})(?!\\S+)'
+    'patterns': [{'include': 'source.ocaml'}]
+  'uident':
+    'match': '[A-Z][a-zA-Z0-9_]*'
+    'name': 'entity.name.tag.token.ocaml'
+  'lident':
+    'match': '[a-z][a-zA-Z0-9_]*'
+    'name': 'entity.name.function.rule.menhir'
+  'ident':
+    'match': '[a-zA-Z][a-zA-Z0-9_]*'
+    'name': 'variable.parameter.rule.menhir'
