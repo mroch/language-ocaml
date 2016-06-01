@@ -217,7 +217,7 @@
             'name': 'keyword.other.menhir'
           '2':
             'name': 'entity.name.function.non-terminal.rule.begin.menhir'
-        'end': '(?<=})\\s*(?!\\|)|'
+        'end': '(?=[^{}]+:)'
         'endCaptures':
           '0':
             'name': 'entity.name.function.non-terminal.rule.end.menhir'
