@@ -1,6 +1,6 @@
 {
   "name": "language-ocaml-fix",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "private": true,
   "description": "Syntax support for the OCaml language",
   "repository": "https://github.com/hackwaly/language-ocaml-fix",
