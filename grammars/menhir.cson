@@ -48,6 +48,12 @@
           '2': {'patterns': [{'include': '#uident'}]}
       }
       {
+        'match': '(%on_error_reduce)([^<>\\r\\n]+)'
+        'captures':
+          '1': {'name': 'keyword.other.directive.menhir'}
+          '2': {'patterns': [{'include': '#lident'}]}
+      }
+      {
         'begin': '%%'
         'beginCaptures':
           '0': {'name': 'keyword.other.rules.begin.menhir'}
@@ -60,25 +66,35 @@
   'rule':
     'patterns': [
       {
-        'match': '\\(([^)]+)\\)(?=\\s*:)'
+        'match': '([a-z][a-zA-Z0-9_]*)\\s*\\(([^)]+)\\)(?=\\s*:)'
         'captures':
-          '1': {'patterns': [{'include': '#ident'}]}
+          '1': {'name': 'entity.name.function.rule.menhir'}
+          '2': {'patterns': [{'include': '#ident'}]}
       }
       {
         'match': '%public|%inline'
         'name': 'keyword.other.modifier.menhir'
       }
-      {'include': '#action'}
-      {'include': '#uident'}
-      {'include': '#lident'}
+      {
+        'begin': ':|\\|'
+        'end': '(?={)'
+        'patterns': [
+          {'include': '#uident'}
+          {'include': '#lident'}
+        ]
+      }
+      {
+        'begin': '(?<![\\\'])({)'
+        'end': '(})(?:\\s*(%prec)\\s*([a-zA-Z][a-zA-Z0-9_]*))?(?![\\S]+)'
+        'endCaptures':
+          '2': {'name': 'keyword.other.prec.menhir'}
+          '3': {'name': 'entity.name.tag.token.menhir'}
+        'patterns': [{'include': 'source.ocaml'}]
+      }
     ]
-  'action':
-    'begin': '(?<![\\\'])({)'
-    'end': '(})(?!\\S+)'
-    'patterns': [{'include': 'source.ocaml'}]
   'uident':
     'match': '[A-Z][a-zA-Z0-9_]*'
-    'name': 'entity.name.tag.token.ocaml'
+    'name': 'entity.name.tag.token.menhir'
   'lident':
     'match': '[a-z][a-zA-Z0-9_]*'
     'name': 'entity.name.function.rule.menhir'
