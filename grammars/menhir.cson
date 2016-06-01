@@ -66,6 +66,7 @@
     ]
   'rule':
     'patterns': [
+      {'include': '#comment'}
       {
         'match': '([a-z][a-zA-Z0-9_]*)\\s*(?:\\(([^)]+)\\))?(?=\\s*:)'
         'captures':
@@ -106,6 +107,17 @@
         'begin': '/[*]'
         'end': '[*]/'
         'name': 'comment.block.menhir'
+      }
+      {
+        'begin': '\\(\\*'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.begin.menhir'
+        'end': '\\*\\)'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.end.menhir'
+        'name': 'comment.block.other.menhir'
       }
     ]
   'variable':
