@@ -66,14 +66,14 @@
   'rule':
     'patterns': [
       {
-        'match': '([a-z][a-zA-Z0-9_]*)\\s*\\(([^)]+)\\)(?=\\s*:)'
+        'match': '([a-z][a-zA-Z0-9_]*)\\s*(?:\\(([^)]+)\\))?(?=\\s*:)'
         'captures':
           '1': {'name': 'entity.name.function.rule.menhir'}
           '2': {'patterns': [{'include': '#ident'}]}
       }
       {
         'match': '%public|%inline'
-        'name': 'keyword.other.modifier.menhir'
+        'name': 'keyword.other.directive.menhir'
       }
       {
         'begin': ':|\\|'
@@ -85,10 +85,16 @@
       }
       {
         'begin': '(?<![\\\'])({)'
-        'end': '(})(?:\\s*(%prec)\\s*([a-zA-Z][a-zA-Z0-9_]*))?(?![\\S]+)'
+        'end': '(})([^\'"*]*)$'
         'endCaptures':
-          '2': {'name': 'keyword.other.prec.menhir'}
-          '3': {'name': 'entity.name.tag.token.menhir'}
+          '2':
+            'patterns': [
+              {
+                'match': '%prec\\b'
+                'name': 'keyword.other.directive.menhir'
+              }
+              {'include': '#uident'}
+            ]
         'patterns': [{'include': 'source.ocaml'}]
       }
     ]
