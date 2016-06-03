@@ -2,76 +2,68 @@
 'fileTypes': ['mly']
 'scopeName': 'source.menhir'
 'patterns': [
+  {'include': '#comment'}
   {
     'begin': '(?=%[^%])'
     'end': '(?=%%)'
-    'patterns': [{'include': '#declaration'}]
+    'patterns': [
+      {'include': '#comment'}
+      {'include': '#declaration'}
+    ]
   }
   {
     'begin': '%%'
     'beginCaptures':
-      '0': {'name': 'keyword.other.rules.begin.menhir'}
+      '0': {'name': 'keyword.other.menhir'}
     'end': '%%'
     'endCaptures':
-      '0': {'name': 'keyword.other.rules.end.menhir'}
-    'patterns': [{'include': '#rule'}]
+      '0': {'name': 'keyword.other.menhir'}
+    'patterns': [
+      {'include': '#comment'}
+      {'include': '#rule'}
+    ]
   }
   {'include': 'source.ocaml'}
 ]
 'repository':
   'declaration':
     'patterns': [
-      {'include': '#comment'}
       {
         'begin': '%{'
         'beginCaptures':
-          '0': {'name': 'keyword.other.code.begin.menhir'}
+          '0': {'name': 'keyword.other.menhir'}
         'end': '%}'
         'endCaptures':
-          '0': {'name': 'keyword.other.code.end.menhir'}
+          '0': {'name': 'keyword.other.menhir'}
         'patterns': [{'include': 'source.ocaml'}]
       }
       {
-        'begin': '(%parameter)\\s*(<)'
+        'match': '(%parameter|%start|%type|%token|%nonassoc|%left|%right|%on_error_reduce)\\b'
+        'name': 'keyword.other.menhir'
+      }
+      {
+        'begin': '(<)\\s*([a-zA-Z][a-zA-Z0-9_]*)\\s*(:)'
         'beginCaptures':
-          '1': {'name': 'keyword.other.directive.menhir'}
+          '1': {'name': 'keyword.other.menhir'}
+          '2': {'name': 'variable.parameter.module.menhir'}
+          '3': {'name': 'keyword.other.menhir'}
         'end': '(>)'
+        'endCaptures':
+          '1': {'name': 'keyword.other.menhir'}
         'patterns': [{'include': 'source.ocaml'}]
       }
       {
-        'begin': '(%start|%type)\\s*(<)'
+        'begin': '(<)'
         'beginCaptures':
-          '1': {'name': 'keyword.other.directive.menhir'}
-        'end': '(>)([^\\r\\n]+)'
+          '1': {'name': 'keyword.other.menhir'}
+        'end': '(>)'
         'endCaptures':
-          '2': {'patterns': [{'include': '#lident'}]}
+          '1': {'name': 'keyword.other.menhir'}
         'patterns': [{'include': 'source.ocaml#typedefs'}]
-      }
-      {
-        'begin': '(%token)\\s*(<)'
-        'beginCaptures':
-          '1': {'name': 'keyword.other.directive.menhir'}
-        'end': '(>)([^\\r\\n]+)'
-        'endCaptures':
-          '2': {'patterns': [{'include': '#uident'}]}
-        'patterns': [{'include': 'source.ocaml#typedefs'}]
-      }
-      {
-        'match': '(%token|%nonassoc|%left|%right)([^<>\\r\\n]+)'
-        'captures':
-          '1': {'name': 'keyword.other.directive.menhir'}
-          '2': {'patterns': [{'include': '#uident'}]}
-      }
-      {
-        'match': '(%on_error_reduce)([^<>\\r\\n]+)'
-        'captures':
-          '1': {'name': 'keyword.other.directive.menhir'}
-          '2': {'patterns': [{'include': '#lident'}]}
       }
     ]
   'rule':
     'patterns': [
-      {'include': '#comment'}
       {
         'match': '([a-z][a-zA-Z0-9_]*)\\s*(?:\\(([^)]+)\\))?(?=\\s*:)'
         'captures':
@@ -79,49 +71,41 @@
           '2': {'patterns': [{'include': '#ident'}]}
       }
       {
-        'match': '%public|%inline'
+        'match': '%public|%inline|%prec'
         'name': 'keyword.other.directive.menhir'
       }
       {
-        'begin': ':|\\|'
+        'begin': '(:|\\|)'
+        'beginCaptures':
+          '1': {'name': 'keyword.other.menhir'}
         'end': '(?={)'
         'patterns': [
+          {'include': '#comment'}
           {'include': '#variable'}
           {'include': '#reference'}
           {'include': '#operator'}
         ]
       }
       {
-        'begin': '(?<![\\\'])({)'
-        'end': '(})([^\'"*]*)$'
+        'begin': '({)'
+        'beginCaptures':
+          '1': {'name': 'keyword.other.menhir'}
+        'end': '(})'
         'endCaptures':
-          '2':
-            'patterns': [
-              {
-                'match': '%prec\\b'
-                'name': 'keyword.other.directive.menhir'
-              }
-              {'include': '#uident'}
-            ]
+          '1': {'name': 'keyword.other.menhir'}
         'patterns': [{'include': 'source.ocaml'}]
       }
     ]
   'comment':
     'patterns': [
       {
-        'begin': '/[*]'
-        'end': '[*]/'
+        'begin': '/\\*'
+        'end': '\\*/'
         'name': 'comment.block.menhir'
       }
       {
         'begin': '\\(\\*'
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.begin.menhir'
         'end': '\\*\\)'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.end.menhir'
         'name': 'comment.block.other.menhir'
       }
     ]
@@ -141,7 +125,7 @@
       {'include': '#lident'}
     ]
   'operator':
-    'match': '[+*?]'
+    'match': '[+*?|]'
     'name': 'keyword.operator.menhir'
   'uident':
     'match': '[A-Z][a-zA-Z0-9_]*'
