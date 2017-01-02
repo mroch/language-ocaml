@@ -90,7 +90,7 @@
   }
   {
     'begin': '(\\s)(?=fun\\s)'
-    'end': '(?=\\))'
+    'end': '(?=\\)|end)'
     'name': 'meta.function.anonymous.ocaml'
     'patterns': [
       {
