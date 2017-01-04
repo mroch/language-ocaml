@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "private": true,
   "description": "Syntax support for the OCaml language",
-  "repository": "https://github.com/hackwaly/language-ocaml-fix",
+  "repository": "https://github.com/andreasdahl/language-ocaml-fix",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
