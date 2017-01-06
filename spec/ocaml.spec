@@ -1,12 +1,20 @@
 // SYNTAX TEST "source.ocaml"
 (* test *)
 // ^ comment.block.ocaml
+fun x -> y
+// <- keyword.other.function-definition.ocaml
+// <- meta.function.anonymous.definition.ocaml
+//^^^^^^ meta.function.anonymous.definition.ocaml
+//  ^ variable.parameter.ocaml
+//    ^^ keyword.other.anonymous-function-arrow.ocaml
+//      ^^ !meta.function.anonymous.definition.ocaml
 begin fun x -> y end
 // <- keyword.control.begin-end.ocaml
-//    ^^^^^^^^^^ meta.function.anonymous.ocaml
-//               ^^^ !meta.function.anonymous.ocaml
+//    ^^^^^^^^ meta.function.anonymous.definition.ocaml
+//    ^^^ meta.function.anonymous.definition.ocaml
 //        ^ variable.parameter.ocaml
-//          ^^ punctuation.separator.function-definition.ocaml
+//          ^^ keyword.other.anonymous-function-arrow.ocaml
+//             ^^^^^ !meta.function.anonymous.definition.ocaml
 //               ^^^ keyword.control.begin-end.ocaml
    a>>=b
 //  ^^^ entity.name.function.infix.ocaml
