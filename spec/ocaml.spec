@@ -12,6 +12,10 @@ begin fun x -> y end
 //  ^^^ entity.name.function.infix.ocaml
    a!=b
 //  ^^ keyword.operator.infix.symbol.ocaml
+   a=b
+//  ^ keyword.operator.infix.symbol.ocaml
+   a<>b
+//  ^^ keyword.operator.infix.symbol.ocaml
    a>b
 //  ^ keyword.operator.infix.symbol.ocaml
    a<b
@@ -20,3 +24,21 @@ begin fun x -> y end
 //  ^^ punctuation.separator.function-return.ocaml
    a->>b
 //  ^^^ entity.name.function.infix.ocaml
+   a+.b
+//  ^^ keyword.operator.infix.floating-point.ocaml
+   a-.b
+//  ^^ keyword.operator.infix.floating-point.ocaml
+   a/.b
+//  ^^ keyword.operator.infix.floating-point.ocaml
+   a*.b
+//  ^^ keyword.operator.infix.floating-point.ocaml
+   a+b
+//  ^ keyword.operator.infix.integer.ocaml
+   a-b
+//  ^ keyword.operator.infix.integer.ocaml
+   a/b
+//  ^ keyword.operator.infix.integer.ocaml
+   a*b
+//  ^ keyword.operator.infix.integer.ocaml
+   a|>b
+//  ^^ entity.name.function.infix.ocaml

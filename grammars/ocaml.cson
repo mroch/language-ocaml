@@ -507,8 +507,12 @@
     'name': 'entity.name.type.variant.ocaml'
   }
   {
-    'match': '(!=|:=|>|<)(?![|!$%&*+./:<=>?@^~-])'
+    'match': '(!=|:=|>|<|=|<>)(?![|!$%&*+./:<=>?@^~-])'
     'name': 'keyword.operator.infix.symbol.ocaml'
+  }
+  {
+    'match': '[*+/-](?![|!$%&*+./:<=>?@^~-])'
+    'name': 'keyword.operator.infix.integer.ocaml'
   }
   {
     'match': '[*+/-]\\.(?![|!$%&*+./:<=>?@^~-])'
