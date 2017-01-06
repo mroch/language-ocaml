@@ -507,11 +507,11 @@
     'name': 'entity.name.type.variant.ocaml'
   }
   {
-    'match': '!=|:=|>|<'
-    'name': 'keyword.operator.symbol.ocaml'
+    'match': '(!=|:=|>|<)(?![|!$%&*+./:<=>?@^~-])'
+    'name': 'keyword.operator.infix.symbol.ocaml'
   }
   {
-    'match': '[*+/-]\\.'
+    'match': '[*+/-]\\.(?![|!$%&*+./:<=>?@^~-])'
     'name': 'keyword.operator.infix.floating-point.ocaml'
   }
   {
@@ -531,12 +531,12 @@
     'name': 'punctuation.separator.ocaml'
   }
   {
-    'match': '->'
+    'match': '->(?![|!$%&*+./:<=>?@^~-])'
     'name': 'punctuation.separator.function-return.ocaml'
   }
   {
     'match': '[=<>@^&+\\-*/$%|][|!$%&*+./:<=>?@^~-]*'
-    'name': 'keyword.operator.infix.ocaml'
+    'name': 'entity.name.function.infix.ocaml'
   }
   {
     'match': '\\bnot\\b|!|[!\\?~][!$%&*+./:<=>?@^~-]+'

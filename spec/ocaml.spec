@@ -8,3 +8,15 @@ begin fun x -> y end
 //        ^ variable.parameter.ocaml
 //          ^^ punctuation.separator.function-definition.ocaml
 //               ^^^ keyword.control.begin-end.ocaml
+   a>>=b
+//  ^^^ entity.name.function.infix.ocaml
+   a!=b
+//  ^^ keyword.operator.infix.symbol.ocaml
+   a>b
+//  ^ keyword.operator.infix.symbol.ocaml
+   a<b
+//  ^ keyword.operator.infix.symbol.ocaml
+   a->b
+//  ^^ punctuation.separator.function-return.ocaml
+   a->>b
+//  ^^^ entity.name.function.infix.ocaml
