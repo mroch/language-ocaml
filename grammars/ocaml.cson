@@ -1023,7 +1023,11 @@
     'patterns': [
       {
         'match': '\\(\\)'
-        'name': 'variable.parameter.unit.ocaml'
+        'name': 'constant.language.unit.ocaml'
+      }
+      {
+        'match': '\\b_\\b'
+        'name': 'constant.language.universal-match.ocaml'
       }
       {
         'include': '#constants'

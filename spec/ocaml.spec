@@ -64,3 +64,15 @@ val ( >> ): a -> b
 //          ^ storage.type.ocaml
 //            ^^ punctuation.separator.function-return.ocaml
 //               ^ storage.type.ocaml
+fun () -> a
+// <- keyword.other.function-definition.ocaml
+// <- meta.function.anonymous.definition.ocaml
+//^^^^^^^ meta.function.anonymous.definition.ocaml
+//  ^^ constant.language.unit.ocaml
+//     ^^ keyword.other.anonymous-function-arrow.ocaml
+fun _ -> a
+// <- keyword.other.function-definition.ocaml
+// <- meta.function.anonymous.definition.ocaml
+//^^^^^^ meta.function.anonymous.definition.ocaml
+//  ^ constant.language.universal-match.ocaml
+//    ^^ keyword.other.anonymous-function-arrow.ocaml
