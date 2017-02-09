@@ -1,6 +1,6 @@
 // SYNTAX TEST "source.ocaml"
 (* test *)
-// ^ comment.block.ocaml
+// ^^^^ comment.block.ocaml
 fun x -> y
 // <- keyword.other.function-definition.ocaml
 // <- meta.function.anonymous.definition.ocaml
@@ -124,3 +124,10 @@ a or b
  a@@b
 //^^ support.function
 end
+
+  (*  *)
+//^^^^^^ comment.block.ocaml
+  (* "test" *)
+//^^^^^^^^^^^^ comment.block.ocaml
+  (* "*)" *)
+//^^^^^^^^^^ comment.block.ocaml

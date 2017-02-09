@@ -700,6 +700,10 @@
           {
             'include': '#comments'
           }
+          {
+            'include': '#comment_strings'
+            'name': 'comment.block.ocaml'
+          }
         ]
       }
     ]
@@ -984,6 +988,27 @@
           {
             'match': '\\\\(?!(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\\d\\d|[bnrt\'"\\\\]|[\\|\\(\\)1-9$^.*+?\\[\\]]|$[ \\t]*))(?:.)'
             'name': 'invalid.illegal.character.string.escape'
+          }
+        ]
+      }
+    ]
+  'comment_strings':
+    'patterns': [
+      {
+        'begin': '(?=[^\\\\])(")'
+        'end': '(")'
+        'patterns': [
+          {
+            'match': '\\\\$[ \\t]*'
+          }
+          {
+            'match': '\\\\(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\\d\\d|[bnrt\'"\\\\])'
+          }
+          {
+            'match': '\\\\[\\|\\(\\)1-9$^.*+?\\[\\]]'
+          }
+          {
+            'match': '\\\\(?!(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\\d\\d|[bnrt\'"\\\\]|[\\|\\(\\)1-9$^.*+?\\[\\]]|$[ \\t]*))(?:.)'
           }
         ]
       }
