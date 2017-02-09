@@ -625,11 +625,11 @@
         'name': 'support.function.pervasives.comparisons.ocaml'
       }
       {
-        'match': '\\b(not|or)\\b'
+        'match': '\\bnot\\b'
         'name': 'support.function.pervasives.boolean-operatons.ocaml'
       }
       {
-        'match': '(?<![|!$%&*+./:<=>?@^~-])(&&|&|\\|\\|)(?![|!$%&*+./:<=>?@^~-])'
+        'match': '(?<![|!$%&*+./:<=>?@^~-])(&&|\\|\\|)(?![|!$%&*+./:<=>?@^~-])'
         'name': 'support.function.pervasives.boolean-operatons.ocaml'
       }
       {
@@ -643,6 +643,14 @@
       {
         'match': '(?<![|!$%&*+./:<=>?@^~-])\\^(?![|!$%&*+./:<=>?@^~-])'
         'name': 'support.function.pervasives.string-operation.ocaml'
+      }
+      {
+        'match': '(?<![|!$%&*+./:<=>?@^~-])&(?![|!$%&*+./:<=>?@^~-])'
+        'name': 'invalid.deprecated.pervasives.boolean-operatons.ocaml'
+      }
+      {
+        'match': '\\bor\\b'
+        'name': 'invalid.deprecated.pervasives.boolean-operatons.ocaml'
       }
     ]
 

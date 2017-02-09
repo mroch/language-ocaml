@@ -82,9 +82,9 @@ begin
   raise a
 //^^^^^ support.function
   raise_notrace a
-//^^^^^ support.function
+//^^^^^^^^^^^^^ support.function
   invalid_arg a
-//^^^^^ support.function
+//^^^^^^^^^^^ support.function
   failwith a
 //^^^^^^^^ support.function
   compare a b
@@ -112,11 +112,11 @@ begin
   not a
 //^^^ support.function
 a or b
-//^^ support.function
+//^^ invalid.deprecated
  a&&b
 //^^ support.function
   a&b
-// ^ support.function
+// ^ invalid.deprecated
  a||b
 //^^ support.function
  a|>b
