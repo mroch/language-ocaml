@@ -97,7 +97,7 @@
     ]
   }
   {
-    'begin': '(?:\\b(with|function)(?=(\\s*$|.*->))\\b|((?<!\\S)(?:\\|)(?=(?:\\w|\\s).*->)))(?:\\s*(exception)\\b)?'
+    'begin': '(?:\\b(with|function)(?=(\\s*$|.*->))\\b|((?<!\\S)(?:\\|)(?=(?:\\w|\\s).*)))(?:\\s*(exception)\\b)?'
     'beginCaptures':
       '1':
         'name': 'keyword.control.match-definition.ocaml'

@@ -76,3 +76,17 @@ fun _ -> a
 //^^^^^^ meta.function.anonymous.definition.ocaml
 //  ^ constant.language.universal-match.ocaml
 //    ^^ keyword.other.anonymous-function-arrow.ocaml
+begin function
+  | a
+//^ keyword.control.match-definition.ocaml
+  | a -> a
+//^ keyword.control.match-definition.ocaml
+//    ^^ punctuation.separator.match-definition.ocaml
+end
+begin match a with
+  | b
+//^ keyword.control.match-definition.ocaml
+  | b -> b
+//^ keyword.control.match-definition.ocaml
+//    ^^ punctuation.separator.match-definition.ocaml
+end
