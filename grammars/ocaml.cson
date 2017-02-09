@@ -478,10 +478,6 @@
     'name': 'entity.name.type.variant.ocaml'
   }
   {
-    'match': '(!=|:=|>|<|=|<>)(?![|!$%&*+./:<=>?@^~-])'
-    'name': 'keyword.operator.infix.symbol.ocaml'
-  }
-  {
     'match': '[*+/-](?![|!$%&*+./:<=>?@^~-])'
     'name': 'keyword.operator.infix.integer.ocaml'
   }
@@ -508,6 +504,9 @@
   {
     'match': '->(?![|!$%&*+./:<=>?@^~-])'
     'name': 'punctuation.separator.function-return.ocaml'
+  }
+  {
+    'include': '#pervasives'
   }
   {
     'match': '[=<>@^&+\\-*/$%|][|!$%&*+./:<=>?@^~-]*'
@@ -611,6 +610,39 @@
   }
 ]
 'repository':
+  'pervasives':
+    'patterns': [
+      {
+        'match': '\\b(raise|raise_notrace|invalid_arg|failwith)\\b'
+        'name': 'support.function.pervasives.exceptions.ocaml'
+      }
+      {
+        'match': '\\b(compare|min|max)\\b'
+        'name': 'support.function.pervasives.comparisons.ocaml'
+      }
+      {
+        'match': '(?<![|!$%&*+./:<=>?@^~-])(=|<>|<|>|<=|>=|==|!=)(?![|!$%&*+./:<=>?@^~-])'
+        'name': 'support.function.pervasives.comparisons.ocaml'
+      }
+      {
+        'match': '\\b(not|or)\\b'
+        'name': 'support.function.pervasives.boolean-operatons.ocaml'
+      }
+      {
+        'match': '(?<![|!$%&*+./:<=>?@^~-])(&&|&|\\|\\|)(?![|!$%&*+./:<=>?@^~-])'
+        'name': 'support.function.pervasives.boolean-operatons.ocaml'
+      }
+      {
+        'match': '\\b(__LOC__|__FILE__|__LINE__|__MODULE__|__POS__|__LOC_OF__|__LINE_OF__|__POS_OF__)\\b'
+        'name': 'support.function.pervasives.debugging.ocaml'
+      }
+      {
+        'match': '(?<![|!$%&*+./:<=>?@^~-])(\\|>|@@)(?![|!$%&*+./:<=>?@^~-])'
+        'name': 'support.function.pervasives.composition.ocaml'
+      }
+    ]
+
+
   'anonymous-function-def':
     'patterns': [
       {

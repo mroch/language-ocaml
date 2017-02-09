@@ -18,16 +18,6 @@ begin fun x -> y end
 //               ^^^ keyword.control.begin-end.ocaml
    a>>=b
 //  ^^^ entity.name.function.infix.ocaml
-   a!=b
-//  ^^ keyword.operator.infix.symbol.ocaml
-   a=b
-//  ^ keyword.operator.infix.symbol.ocaml
-   a<>b
-//  ^^ keyword.operator.infix.symbol.ocaml
-   a>b
-//  ^ keyword.operator.infix.symbol.ocaml
-   a<b
-//  ^ keyword.operator.infix.symbol.ocaml
    a->b
 //  ^^ punctuation.separator.function-return.ocaml
    a->>b
@@ -48,8 +38,6 @@ begin fun x -> y end
 //  ^ keyword.operator.infix.integer.ocaml
    a*b
 //  ^ keyword.operator.infix.integer.ocaml
-   a|>b
-//  ^^ entity.name.function.infix.ocaml
 val test: a -> b
 // <- keyword.other.ocaml
 //  ^^^^ entity.name.type.value-signature.ocaml
@@ -89,4 +77,50 @@ begin match a with
   | b -> b
 //^ keyword.control.match-definition.ocaml
 //    ^^ punctuation.separator.match-definition.ocaml
+end
+begin
+  raise a
+//^^^^^ support.function
+  raise_notrace a
+//^^^^^ support.function
+  invalid_arg a
+//^^^^^ support.function
+  failwith a
+//^^^^^^^^ support.function
+  compare a b
+//^^^^^^^ support.function
+  min a b
+//^^^ support.function
+  max a b
+//^^^ support.function
+ a=b
+//^ support.function
+ a<>b
+//^^ support.function
+ a<b
+//^ support.function
+ a>b
+//^ support.function
+ a<=b
+//^^ support.function
+ a>=b
+//^^ support.function
+ a==b
+//^^ support.function
+ a!=b
+//^^ support.function
+  not a
+//^^^ support.function
+a or b
+//^^ support.function
+ a&&b
+//^^ support.function
+  a&b
+// ^ support.function
+ a||b
+//^^ support.function
+ a|>b
+//^^ support.function
+ a@@b
+//^^ support.function
 end
