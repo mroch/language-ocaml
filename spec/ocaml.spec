@@ -133,3 +133,8 @@ end
 //^^^^^^^^^^^^ comment.block.ocaml
   (* "*)" *)
 //^^^^^^^^^^ comment.block.ocaml
+
+let a = b in c
+//^^^ keyword.other *)
+(* //      ^ punctuation *)
+(* //          ^^ keyword.other
