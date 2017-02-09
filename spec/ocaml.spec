@@ -123,6 +123,8 @@ a or b
 //^^ support.function
  a@@b
 //^^ support.function
+ a^b
+//^ support.function
 end
 
   (*  *)

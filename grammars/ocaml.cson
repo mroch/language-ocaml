@@ -640,6 +640,10 @@
         'match': '(?<![|!$%&*+./:<=>?@^~-])(\\|>|@@)(?![|!$%&*+./:<=>?@^~-])'
         'name': 'support.function.pervasives.composition.ocaml'
       }
+      {
+        'match': '(?<![|!$%&*+./:<=>?@^~-])\\^(?![|!$%&*+./:<=>?@^~-])'
+        'name': 'support.function.pervasives.string-operation.ocaml'
+      }
     ]
 
 
