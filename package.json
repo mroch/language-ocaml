@@ -1,9 +1,9 @@
 {
-  "name": "language-ocaml-fix",
+  "name": "language-ocaml",
   "version": "1.7.4",
   "private": true,
   "description": "Syntax support for the OCaml language",
-  "repository": "https://github.com/andreasdahl/language-ocaml-fix",
+  "repository": "https://github.com/toroidal-code/language-ocaml",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
