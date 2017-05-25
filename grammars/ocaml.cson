@@ -44,7 +44,7 @@
   {
     'comment': 'Scoped declaration'
     'begin': '(?=\\blet\\b)'
-    'end': '(?<=in)'
+    'end': '(?<=in)|(?=type|exception|external)'
     'name': 'meta.let_binding.ocaml'
     'patterns': [
       {
@@ -83,7 +83,7 @@
         'beginCaptures':
           '0':
             'name': 'punctuation.separator.assignment.ocaml'
-        'end': '\\b(?:(in)|(?=and))\\b'
+        'end': '\\b(?:(in)|(?=and|type|exception|external))\\b'
         'endCaptures':
           '1':
             'name': 'keyword.other.in.ocaml'
@@ -98,9 +98,12 @@
   }
   {
     'begin': '^\\s*(?=type\\s)'
-    'end': '\\b(?=let|end|val)|^\\s*$'
+    'end': '\\b(?=let|end|val|exception|external)'
     'name': 'meta.type-definition-group.ocaml'
     'patterns': [
+      {
+        'include': '#comments'
+      }
       {
         'begin': '\\b(type|and)\\s+([^=]*)(=)?'
         'beginCaptures':
@@ -110,7 +113,7 @@
             'name': 'storage.type.ocaml'
           '3':
             'name': 'punctuation.separator.type-definition.ocaml'
-        'end': '(?=\\b(type|and|let|end|val)\\b)|(?=^\\s*$)'
+        'end': '(?=\\b(type|and|let|end|val|exception|external)\\b)|(?=^\\s*$)'
         'name': 'meta.type-definition.ocaml'
         'patterns': [
           {
