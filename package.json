@@ -1,6 +1,6 @@
 {
   "name": "language-ocaml",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "private": true,
   "description": "Syntax support for the OCaml language",
   "repository": "https://github.com/toroidal-code/language-ocaml",
