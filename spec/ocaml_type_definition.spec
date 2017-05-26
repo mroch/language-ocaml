@@ -34,3 +34,9 @@ type x = int
 //^^^^^^^^^^ meta.type-definition-group.ocaml
 external y : int -> unit = "y"
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^ !meta.type-definition-group.ocaml
+
+
+type x = int
+//^^^^^^^^^^ meta.type-definition-group.ocaml
+module Foo = struct end
+//^^^^^^^^^^^^^^^^^^^^^ !meta.type-definition-group.ocaml

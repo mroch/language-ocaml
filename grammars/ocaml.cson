@@ -98,7 +98,7 @@
   }
   {
     'begin': '^\\s*(?=type\\s)'
-    'end': '\\b(?=let|end|val|exception|external)'
+    'end': '\\b(?=let|end|val|exception|external|module)'
     'name': 'meta.type-definition-group.ocaml'
     'patterns': [
       {
@@ -113,7 +113,7 @@
             'name': 'storage.type.ocaml'
           '3':
             'name': 'punctuation.separator.type-definition.ocaml'
-        'end': '(?=\\b(type|and|let|end|val|exception|external)\\b)|(?=^\\s*$)'
+        'end': '(?=\\b(type|and|let|end|val|exception|external|module)\\b)|(?=^\\s*$)'
         'name': 'meta.type-definition.ocaml'
         'patterns': [
           {
