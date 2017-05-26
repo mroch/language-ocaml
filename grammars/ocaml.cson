@@ -44,7 +44,7 @@
   {
     'comment': 'Scoped declaration'
     'begin': '(?=\\blet\\b)'
-    'end': '(?<=in)|(?=type|exception|external)'
+    'end': '(?<=in)|(?=type|end|exception|external)'
     'name': 'meta.let_binding.ocaml'
     'patterns': [
       {
@@ -83,7 +83,7 @@
         'beginCaptures':
           '0':
             'name': 'punctuation.separator.assignment.ocaml'
-        'end': '\\b(?:(in)|(?=and|type|exception|external))\\b'
+        'end': '\\b(?:(in)|(?=and|type|end|exception|external))\\b'
         'endCaptures':
           '1':
             'name': 'keyword.other.in.ocaml'
