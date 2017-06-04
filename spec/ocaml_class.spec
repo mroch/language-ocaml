@@ -21,5 +21,8 @@ class foo = object
 //          ^^^^^^ meta.object.ocaml
   method bar x = x
 //^^^^^^^^^^^^ meta.method.ocaml
+  method! bar x = x
+//^^^^^^^ keyword.other.method-definition.ocaml
+//^^^^^^^^^^^^^ meta.method.ocaml
 end
 //<- meta.object.ocaml
