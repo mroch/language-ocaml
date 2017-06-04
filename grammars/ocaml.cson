@@ -250,7 +250,7 @@
     ]
   }
   {
-    'begin': '\\b(object)\\s*(?:(\\()(_?[a-z]+)(\\)))?\\s*$'
+    'begin': '\\b(object)\\s*(?:(\\()(_?[a-z]+)(\\)))?\\s*'
     'beginCaptures':
       '1':
         'name': 'keyword.other.object-definition.ocaml'
