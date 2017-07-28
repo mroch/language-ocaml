@@ -40,3 +40,9 @@ type x = int
 //^^^^^^^^^^ meta.type-definition-group.ocaml
 module Foo = struct end
 //^^^^^^^^^^^^^^^^^^^^^ !meta.type-definition-group.ocaml
+
+type x =
+  | Int of int
+
+  | String of string
+//^^^^^^^^^^^^^^^^^^ meta.type-definition.ocaml

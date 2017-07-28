@@ -113,7 +113,7 @@
             'name': 'storage.type.ocaml'
           '3':
             'name': 'punctuation.separator.type-definition.ocaml'
-        'end': '(?=\\b(type|and|let|end|val|exception|external|module)\\b)|(?=^\\s*$)'
+        'end': '(?=\\b(type|and|let|end|val|exception|external|module)\\b)'
         'name': 'meta.type-definition.ocaml'
         'patterns': [
           {
