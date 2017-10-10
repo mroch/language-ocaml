@@ -847,8 +847,8 @@
         'name': 'constant.language.universal-match.ocaml'
       }
       {
-        'match': '\\|(?=\\s*\\S)'
-        'name': 'punctuation.separator.match-pattern.ocaml'
+        'match': '\\|(?=$|\\s*\\S)'
+        'name': 'keyword.operator.match-pattern.ocaml'
       }
       {
         'begin': '(\\()(?=(?!=.*?->).*?\\|)'
@@ -863,7 +863,7 @@
         'patterns': [
           {
             'match': '\\|'
-            'name': 'punctuation.separator.match-option.ocaml'
+            'name': 'keyword.operator.match-option.ocaml'
           }
           {
             'include': '#matchpatterns'
@@ -1059,7 +1059,7 @@
     'patterns': [
       {
         'match': '\\|'
-        'name': 'punctuation.separator.variant-definition.ocaml'
+        'name': 'keyword.operator.variant-definition.ocaml'
       }
       {
         'include': '#comments_inner'
@@ -1112,10 +1112,6 @@
       }
       {
         'include': '$self'
-      }
-      {
-        'match': '\\|'
-        'name': 'punctuation.separator.algebraic-type.ocaml'
       }
     ]
   'function-defs':
