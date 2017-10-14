@@ -843,6 +843,9 @@
   'matchpatterns':
     'patterns': [
       {
+        'include': '#comments',
+      }
+      {
         'match': '\\b_\\b'
         'name': 'constant.language.universal-match.ocaml'
       }

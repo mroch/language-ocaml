@@ -23,3 +23,8 @@ match x with
 //^ !variable.parameter.record.ocaml
 //^^^ keyword.other.function-definition.ocaml
 //    ^^^ entity.name.function.ocaml
+
+begin match x with
+  (* | comment *)
+//^^^^^^^^^^^^^^^ comment.block.ocaml
+| A -> ()
