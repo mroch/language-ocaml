@@ -28,3 +28,4 @@ begin match x with
   (* | comment *)
 //^^^^^^^^^^^^^^^ comment.block.ocaml
 | A -> ()
+end
